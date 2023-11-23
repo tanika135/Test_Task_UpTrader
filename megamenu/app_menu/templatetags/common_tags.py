@@ -1,5 +1,5 @@
 from django import template
-from models import Menu
+from app_menu.models import Menu
 
 register = template.Library()
 
