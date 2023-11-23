@@ -1,6 +1,6 @@
 from django.contrib import admin
 from mptt.admin import MPTTModelAdmin
-from app_menu.models import MenuItem
+from app_menu.models import MenuItem, MenuType
 
 
 class MenuItemMPTTModelAdmin(MPTTModelAdmin):
@@ -8,3 +8,10 @@ class MenuItemMPTTModelAdmin(MPTTModelAdmin):
 
 
 admin.site.register(MenuItem, MenuItemMPTTModelAdmin)
+
+
+class MenuTypeAdmin(admin.ModelAdmin):
+    model = MenuType
+
+
+admin.site.register(MenuType, MenuTypeAdmin)

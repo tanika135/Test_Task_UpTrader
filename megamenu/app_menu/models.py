@@ -7,6 +7,7 @@ class MenuItem(MPTTModel):
     url = models.CharField('Ссылка', max_length=255)
     position = models.PositiveIntegerField('Позиция', default=1)
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+    menu = models.ForeignKey('MenuType', on_delete=models.CASCADE)
 
     class MPTTMeta:
         order_insertion_by = ['position']
@@ -17,3 +18,15 @@ class MenuItem(MPTTModel):
     class Meta:
         verbose_name = 'Пункт меню'
         verbose_name_plural = 'Пункты меню'
+
+
+class MenuType(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Тип меню'
+        verbose_name_plural = 'Типы меню'
+
