@@ -1,0 +1,12 @@
+<li {% if item.active %} class="open" {% endif %}>
+    <a href="{{ item.url }}" >{{ item.name }}</a>
+    {% if item.children %}
+        <ul class="submenu" >
+            {% for sub_item in item.children %}
+                {% with item=sub_item %}
+                    {% include "app_menu/menu_item.html" %}
+                {% endwith %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

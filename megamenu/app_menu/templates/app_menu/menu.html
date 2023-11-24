@@ -1,5 +1,16 @@
 <ul class="menu">
 {% for m_item in menu_items %}
-    <li><a href="{{ m_item.url }}">{{ m_item.name }}</a></li>
+    {% with item=m_item %}
+        {% include "app_menu/menu_item.html" %}
+    {% endwith %}
 {% endfor %}
 </ul>
+
+<style>
+    li.open > ul {
+        display: block;
+    }
+    .menu ul {
+        display: none;
+    }
+</style>
